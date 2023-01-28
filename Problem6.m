@@ -62,7 +62,7 @@ b(5,1) = sum(sysEffTr.*f5(pTr, srTr));
 coefs = A\b;
 
 surf = @(x1,x2) coefs(1)*f1(x1,x2) + coefs(2)*f2(x1, x2) + coefs(3)*f3(x1,x2) + coefs(4)*f4(x1,x2) + coefs(5)*f5(x1, x2);
-fsurf(surf,[min(pTr) max(pTr) min(srTr) max(srTr)]);
+fsurf(surf,[min(p) max(p) min(sr) max(sr)]);
 xlabel("Pressure (bar)");
 ylabel("Steam Rate (kmol/hr)");
 zlabel("System Efficiency (%)")
@@ -74,3 +74,6 @@ rSqTr = 1 - sum((yHatTr-sysEffTr).^2)/sum((sysEffTr-yBarTr).^2)
 yHatTe = surf(pTe, srTe);
 yBarTe = sum(sysEffTe)/length(sysEffTe);
 rSqTe = 1 - sum((yHatTe-sysEffTe).^2)/sum((sysEffTe-yBarTe).^2)
+
+XY = fminsearch(@(b)-surf(b(1),b(2)), [10;1000])
+
