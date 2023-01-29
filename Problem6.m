@@ -3,6 +3,7 @@ clear;
 clc;
 
 data = readmatrix("thermal_efficiency.csv");
+
 p = data(:, 1);
 sr = data(:, 2);
 sysEff = data(:, 3);
@@ -76,4 +77,4 @@ yBarTe = sum(sysEffTe)/length(sysEffTe);
 rSqTe = 1 - sum((yHatTe-sysEffTe).^2)/sum((sysEffTe-yBarTe).^2)
 
 XY = fminsearch(@(b)-surf(b(1),b(2)), [10;1000])
-
+surf(XY(1),XY(2))

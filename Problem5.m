@@ -23,10 +23,17 @@ rSq = 1 - (sum((yHat-weight).^2))/(sum((weight-yBar).^2))
 figure
 scatter(height,weight);
 hold
+title("NBA Height Vs Weight");
+xlabel("height (cm)")
+ylabel("weight (kg)")
+
+figure
+scatter(height,weight);
+hold
 fplot(line,[min(height), max(height)])
-title("NBA Hight Vs Weight with Linear Regression");
-xlabel("height")
-ylabel("weight")
+title("NBA Height Vs Weight with Linear Regression");
+xlabel("height (cm)")
+ylabel("weight (kg)")
 legend('', sprintf('w = %.3f + %.3fh', coeff(1,1), coeff(2,1)))
 
 sumH3 = sum(height.^3);
@@ -45,7 +52,7 @@ figure
 scatter(height,weight);
 hold
 fplot(poly,[min(height), max(height)])
-title("NBA Hight Vs Weight with Quadratic Regression");
-xlabel("height")
-ylabel("weight")
+title("NBA Height Vs Weight with Quadratic Regression");
+xlabel("height (cm)")
+ylabel("weight (kg)")
 legend('', sprintf('w = %.3f + %.3fh + %.3fh^2', coeff(1,1), coeff(2,1), coeff2(3,1)))
